@@ -1,0 +1,6 @@
+services:
+  chal: 
+    build:
+      context: chal
+    ports:
+      - '9000:9000'

@@ -1,0 +1,28 @@
+#!/bin/bash
+IFS=''
+
+banner='
+___________                      ________
+\_   _____/__  ___ ____   ____  /  _____/  ____   ____
+ |    __)_\  \/  // __ \_/ ___\/   \  ____/ __ \ /    \
+ |        \>    <\  ___/\  \___\    \_\  \  ___/|   |  \
+/_______  /__/\_ \\___  >\___  >\______  /\___  >___|  /
+        \/      \/    \/     \/        \/     \/     \/
+Create your script: '
+
+echo -n $banner
+
+# create the script, easy!
+read -r script
+
+# oh, don't forget to add watermark!
+script+='(created by execgen)'
+
+# run the script for you, sweet!
+tmp=$(mktemp)
+echo "#!$script" > "$tmp"
+cat $tmp
+chmod 0755 "$tmp"
+out=$("$tmp")
+echo "$out"
+rm "$tmp"

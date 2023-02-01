@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Trust</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+    <meta http-equiv="Content-Security-Policy" content="trusted-types default dompurify; require-trusted-types-for 'script'">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.1/purify.min.js"></script>
+    <script>
+      trustedTypes.createPolicy('default', {
+        createHTML: DOMPurify.sanitize
+      })
+    </script>
+  </head>
+  <body>
+    <main>
+      <article id="container">
+      </article>
+      <input type=hidden id=key>
+      <input type=hidden id=value>
+      <form action=report method=POST>
+        <input type=hidden id=url name=url>
+        <button id="report">Report</button>
+      </form>
+    </main>
+    <script>
+      url.value = window.location;
+      const get = path => {
+        return path.split('/').reduce((obj, key) => obj[key], document.all)
+      }
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      key.value = urlParams.get('key');
+      value.value = urlParams.get('value');
+      container.innerHTML = urlParams.get('html').replace(`{{${get(urlParams.get('keypath'))}}}`, get(urlParams.get('valuepath')));
+    </script>
+  </body>
+</html>

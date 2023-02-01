@@ -1,0 +1,34 @@
+#!/bin/bash
+IFS=''
+regex='^[A-Za-z0-9 /]*$'
+
+banner='
+___________                      ________
+\_   _____/__  ___ ____   ____  /  _____/  ____   ____
+ |    __)_\  \/  // __ \_/ ___\/   \  ____/ __ \ /    \
+ |        \>    <\  ___/\  \___\    \_\  \  ___/|   |  \
+/_______  /__/\_ \\___  >\___  >\______  /\___  >___|  /
+        \/      \/    \/     \/        \/     \/     \/ (safe version)
+Create your script: '
+
+echo -n $banner
+
+# create the script, easy!
+read -r script
+
+# for your safety
+if ! [[ $script =~ $regex ]]; then
+  echo "Hacker is not allowed to use the tool!"
+  exit 0
+fi
+
+# oh, don't forget to add watermark!
+script+='(created by execgen)'
+
+# run the script for you, sweet!
+tmp=$(mktemp)
+echo "#!$script" > "$tmp"
+chmod 0755 "$tmp"
+out=$("$tmp")
+echo "$out"
+rm "$tmp"

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebShare</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+  </head>
+  <body>
+    <main>
+      <article style="padding: 40px">
+        <h2>Hi, {{name}}</h2>
+        <form method=POST enctype=multipart/form-data>
+          <p>
+            <label>Upload your website's zip</label>
+            <input type=file name=file>
+          </p>
+          <p>
+            <button formaction="upload">Upload</button>
+          </p>
+        </form>
+      </article>
+    </main>
+  </body>
+</html>

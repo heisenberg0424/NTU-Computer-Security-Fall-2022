@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Trust</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+  </head>
+  <body>
+    <main>
+      <h1>Trust</h1>
+      <hr>
+      <article>
+        <form action=render>
+          <p>
+            <label>HTML</label>
+            <textarea type=text name=html placeholder="Hello, {{name}}"><h1>Hello, {{name}}</h1></textarea>
+          </p>
+          <p>
+            <label>Key</label>
+            <input type=text name=key  placeholder="name">
+          </p>
+          <p>
+            <label>Value</label>
+            <input type=text name=value placeholder="world">
+          </p>
+            <input type=hidden name=keypath value="key/value">
+            <input type=hidden name=valuepath value="value/value">
+          <input type=submit value=Render>
+        </form>
+      </article>
+    </main>
+  </body>
+</html>
